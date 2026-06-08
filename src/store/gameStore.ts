@@ -128,6 +128,8 @@ export const useGameStore = create<GameStore>((set, get) => ({
     if (allDone) {
       playCompleteSound();
       set({ phase: 'won', showKey: true });
+      window.parent.postMessage('GAME_CLEAR', '*');
+      console.log('已經對外發送 GAME_CLEAR 通關訊號');
     }
   },
 }));
